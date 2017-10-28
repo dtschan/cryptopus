@@ -15,7 +15,7 @@ class Admin::UsersController < Admin::AdminController
   def index
     # defining @soloteams for further use in destroy action
     if flash[:user_to_delete].present?
-      user_to_delete = User.find(flash[:user_to_delete])
+      user_to_delete = User::Human.find(flash[:user_to_delete])
       @soloteams = teams_to_delete(user_to_delete)
     end
 
@@ -52,7 +52,7 @@ class Admin::UsersController < Admin::AdminController
 
   # GET /admin/users/new
   def new
-    @user = User.new
+    @user = User::Human.new
     respond_to do |format|
       format.html # new.html.haml
     end
@@ -62,7 +62,7 @@ class Admin::UsersController < Admin::AdminController
   def create
     password = params[:user][:password]
 
-    @user = User.create_db_user(password, user_params)
+    @user = User::Human.create_db_user(password, user_params)
 
     respond_to do |format|
       if @user.save
@@ -103,7 +103,7 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def user
-    @user ||= User.find(params[:id])
+    @user ||= User::Human.find(params[:id])
   end
 
   def user_params

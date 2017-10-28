@@ -20,6 +20,7 @@ class Admin::RecryptrequestsController < Admin::AdminController
 
     recrypt_passwords(@recryptrequest.user, @admin, session[:private_key]) do
       @recryptrequest.destroy
+      # TODO remove all api tokens
       flash[:notice] = t('flashes.admin.recryptrequests.all', user_name: @user.username)
     end
 

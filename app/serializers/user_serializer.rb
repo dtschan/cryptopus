@@ -19,6 +19,9 @@
 #  last_failed_login_attempt_at :datetime
 #  failed_login_attempts        :integer          default(0), not null
 #  last_login_from              :string
+#  type                         :string
+#  human_user_id                :integer
+#  options                      :text
 #
 
 #  Copyright (c) 2008-2017, Puzzle ITC GmbH. This file is part of

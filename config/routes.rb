@@ -66,6 +66,12 @@ Rails.application.routes.draw do
   end
 
   scope '/api', module: 'api' do
+    resources :api_tokens, except: :show do
+      member do
+        patch 'renew', to: 'api_tokens/renew#update'
+      end
+    end
+    resources :accounts, only: [:show]
     scope '/search', module: 'search' do
       get :accounts
       get :groups
