@@ -75,6 +75,7 @@ Rails.application.routes.draw do
       resources :users, only: [] do
         patch :toggle_admin, to: '/api/admin/users#toggle_admin'
       end
+      resources :ldap_connection_test, only: ['new']
     end
 
     # INFO don't mix scopes and resources in routes
