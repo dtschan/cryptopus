@@ -10,7 +10,12 @@ class Admin::SettingsController < Admin::AdminController
 
   helper_method :ldap_settings, :general_settings
 
+  def index
+    authorize Setting
+  end
+
   def update_all
+    authorize Setting
     update_attributes(params[:setting])
     flash[:notice] = t('flashes.admin.settings.successfully_updated')
     respond_to do |format|

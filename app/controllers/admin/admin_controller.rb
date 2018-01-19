@@ -6,16 +6,16 @@
 #  https://github.com/puzzle/cryptopus.
 
 class Admin::AdminController < ApplicationController
-  before_action :check_for_admin
+#  before_action :check_for_admin
 
   protected
 
-  def check_for_admin
-    user = User.find(session[:user_id])
-
-    unless user.admin?
-      flash[:error] = t('flashes.admin.admin.no_access')
-      redirect_to teams_path
-    end
-  end
+#  def check_for_admin
+#    user = User.find(session[:user_id])
+#
+#    unless user.admin?
+#      flash[:error] = t('flashes.admin.admin.no_access')
+#      redirect_to teams_path
+#    end
+#  end
 end
