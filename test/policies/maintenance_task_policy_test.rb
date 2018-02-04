@@ -26,7 +26,7 @@ class MaintenanceTaskPolicyTest < PolicyTest
     end   
  
     test 'admin cannot prepare disabled maintenance tasks' do
-      MaintenanceTasks::NewRootPassword.any_instance
+      MaintenanceTasks::RootAsAdmin.any_instance
                                        .expects(:enabled?)
                                        .returns(false)
       
@@ -34,7 +34,7 @@ class MaintenanceTaskPolicyTest < PolicyTest
     end
 
     test 'conf_admin cannot prepare disabled maintenance tasks' do
-      MaintenanceTasks::NewRootPassword.any_instance
+      MaintenanceTasks::RootAsAdmin.any_instance
                                        .expects(:enabled?)
                                        .returns(false)
       cadmin = conf_admin
@@ -53,7 +53,7 @@ class MaintenanceTaskPolicyTest < PolicyTest
     end
     
     test 'admin cannot execute disabled maintenance tasks' do
-      MaintenanceTasks::NewRootPassword.any_instance
+      MaintenanceTasks::RootAsAdmin.any_instance
                                        .expects(:enabled?)
                                        .returns(false)
       
@@ -65,7 +65,7 @@ class MaintenanceTaskPolicyTest < PolicyTest
     end
     
     test 'conf_admin cannot execute disabled maintenance tasks' do
-      MaintenanceTasks::NewRootPassword.any_instance
+      MaintenanceTasks::RootAsAdmin.any_instance
                                        .expects(:enabled?)
                                        .returns(false)
       
@@ -80,7 +80,7 @@ class MaintenanceTaskPolicyTest < PolicyTest
   private
 
   def task
-    MaintenanceTasks::NewRootPassword.new
+    MaintenanceTasks::RootAsAdmin.new
   end
 
 end
